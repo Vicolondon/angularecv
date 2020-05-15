@@ -1,4 +1,15 @@
-<a [routerLink]="'/'">Home</a>
-<a [routerLink]="'/login'">Login</a>
-<a [routerLink]="'/articles'">Articles</a>
+<ul>
+    <li *ngIf="!userData">
+        <a [routerLink]="'/'">Home</a>
+    </li>
+    <li *ngIf="!userData">
+        <a [routerLink]="'/login'">Login</a>
+    </li>
+    <li *ngIf="userData">
+        <a [routerLink]="'/articles'">Articles</a>
+    </li>
+    <li *ngIf="userData">
+        <a href="#" (click)="logout()">Logout</a>
+    </li>
+</ul>
 <h1 *ngIf="userData !== null" [innerText]="userData.name"></h1>

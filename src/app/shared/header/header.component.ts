@@ -20,8 +20,26 @@ export class HeaderComponent implements OnInit {
             // Get user data observer
             this.ObservableService.getUserInfo().subscribe( userDataObserver => {
                 if(userDataObserver === null) { this.userData = null }
-                else{ this.userData = userDataObserver[0] }
+                else{ 
+                    if(userDataObserver.length > 0){
+                        // Set local storage
+                        localStorage.setItem('userEmail', userDataObserver[0].email );
+            
+                        // Update userData value
+                        this.userData = userDataObserver[0];
+                    }
+                    else{
+                        this.userData = null
+                    }
+                }
             })
+        }
+        public logout = () => {
+            // Delete localstorage
+            localStorage.removeItem('userEmail');
+        
+            // Set user info obserrbale value
+            this.ObservableService.setObservableData('users', null)
         }
 
         ngOnInit(){};

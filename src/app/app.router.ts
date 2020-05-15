@@ -6,7 +6,7 @@ Imports
     
     // Inner
     import { HomePageComponent } from "./routes/home-page/home-page.component";
-    import { LoginComponent } from "./routes/login/login.component";
+    import { LoginPageComponent } from "./routes/login-page/login-page.component";
     import { ArticlesComponent } from "./routes/articles/articles.component";
 //
 
@@ -20,7 +20,7 @@ Export
         },
         {
             path: 'login',
-            component: LoginComponent
+            component: LoginPageComponent
         },
         {
             path: 'articles',

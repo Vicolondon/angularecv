@@ -1,5 +1,6 @@
-<form 
-    [formGroup]="formData"
+<form
+    [formGroup]="formData" 
+    (submit)="formSubmit.emit(formData.value.email)"
 >
     <input  
         formControlName="email"

@@ -1,13 +1,3 @@
-/*import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent {
-  title = 'ANGapp';
-}*/
 /* 
 Import
 */
@@ -34,9 +24,18 @@ Componant class definition
 */
   export class AppComponent implements OnInit {
     title = 'ANGapp';
-    
-    constructor(private CrudService: CrudService){}
+    /* 
+    Declaration
+    */
+        // Properties
+        public userData: any;
 
-    ngOnInit(){}
+        constructor(
+          private CrudService: CrudService
+      ){}
+  
+      async ngOnInit(){
+          await this.CrudService.readOneItem('users', `email=${localStorage.getItem('userEmail')}`);
+      };
   }
 //
