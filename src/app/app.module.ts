@@ -11,6 +11,10 @@ import { HeaderComponent } from './shared/header/header.component';
 import { LoginComponent } from './routes/login/login.component';
 import { ArticlesComponent } from './routes/articles/articles.component';
 
+// http module
+import { HttpClientModule } from "@angular/common/http";
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +26,7 @@ import { ArticlesComponent } from './routes/articles/articles.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot( AppRouterModule, { onSameUrlNavigation: 'reload' } ),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
