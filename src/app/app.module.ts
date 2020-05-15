@@ -16,6 +16,7 @@ import { HttpClientModule } from "@angular/common/http";
 
 // CRUD
 import { CrudService } from "./services/crud/crud.service";
+import { ObservableService } from "./services/observable/observable.service";
 
 
 @NgModule({
@@ -29,10 +30,12 @@ import { CrudService } from "./services/crud/crud.service";
   imports: [
     BrowserModule,
     RouterModule.forRoot( AppRouterModule, { onSameUrlNavigation: 'reload' } ),
-    HttpClientModule,
-    CrudService
+    HttpClientModule
   ],
-  providers: [CrudService],
+  providers: [
+    CrudService,
+    ObservableService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

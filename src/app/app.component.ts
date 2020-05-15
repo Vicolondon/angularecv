@@ -13,6 +13,7 @@ Import
 */
   // Angular
   import { Component, OnInit } from '@angular/core';
+  import { CrudService } from "./services/crud/crud.service";
 //
 
 /* 
@@ -34,7 +35,7 @@ Componant class definition
   export class AppComponent implements OnInit {
     title = 'ANGapp';
     
-    constructor(){}
+    constructor(private CrudService: CrudService){}
 
     ngOnInit(){}
   }

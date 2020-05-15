@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CrudService } from "../../services/crud/crud.service";
 
 @Component({
   selector: 'app-home-page',
@@ -6,10 +7,33 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class HomePageComponent implements OnInit {
+  constructor(private CrudService: CrudService) { }
 
-  constructor() { }
+  private getUserInfo = (email: String ) => {
+      // Use CrudService to get user infos
+      this.CrudService.readOneItem('users', `email=${email}`)
+      .then( data => {
+          console.log('SUCCES request', data);
+      })
+      .catch( error => {
+          console.log('ERROR request', error);
+      });
+  };
 
-  ngOnInit() {
-  }
+  private getUsersInfo = ( ) => {
+      // Use CrudService to get user infos
+      this.CrudService.readAllItems('users')
+      .then( data => {
+          console.log('SUCCES request', data);
+      })
+      .catch( error => {
+          console.log('ERROR request', error);
+      });
+  };
+
+  ngOnInit(){
+      // this.getUserInfo('Sincere@april.biz');
+      // this.getUsersInfo();
+  };
 
 }

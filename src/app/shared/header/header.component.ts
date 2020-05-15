@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ObservableService } from "../../services/observable/observable.service";
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+    /* 
+    Declaration
+    */
+        // Properties
+        public userData: any;
 
-  ngOnInit() {
-  }
+        constructor(
+            private ObservableService: ObservableService
+        ){
+            // Get user data observer
+            this.ObservableService.getUserInfo().subscribe( userDataObserver => {
+                if(userDataObserver === null) { this.userData = null }
+                else{ this.userData = userDataObserver[0] }
+            })
+        }
+
+        ngOnInit(){};
 
 }
