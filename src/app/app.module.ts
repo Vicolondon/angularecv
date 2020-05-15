@@ -14,6 +14,9 @@ import { ArticlesComponent } from './routes/articles/articles.component';
 // http module
 import { HttpClientModule } from "@angular/common/http";
 
+// CRUD
+import { CrudService } from "./services/crud/crud.service";
+
 
 @NgModule({
   declarations: [
@@ -26,9 +29,10 @@ import { HttpClientModule } from "@angular/common/http";
   imports: [
     BrowserModule,
     RouterModule.forRoot( AppRouterModule, { onSameUrlNavigation: 'reload' } ),
-    HttpClientModule
+    HttpClientModule,
+    CrudService
   ],
-  providers: [],
+  providers: [CrudService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

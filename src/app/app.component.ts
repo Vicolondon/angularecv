@@ -32,6 +32,7 @@ Componant configuration
 Componant class definition
 */
   export class AppComponent implements OnInit {
+    title = 'ANGapp';
     
     constructor(){}
 
