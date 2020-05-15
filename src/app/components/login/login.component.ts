@@ -29,11 +29,12 @@ export class LoginComponent implements OnInit {
         // Get user infos
         const userInfo = this.CrudService.readOneItem('users', `email=${email}`);
     
+        /**
         // Check user info
         if(userInfo.length > 0){
             // Change route endpoint
             this.Router.navigateByUrl('/connected');
-        }
+        } */
     };
     // Method to reset form
     private resetForm = ()  => {

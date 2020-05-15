@@ -20,23 +20,25 @@ export class HomePageComponent implements OnInit {
 
       console.log(userInfo);
      
+      /*
         // Check user info
         if(userInfo.length > 0){
             // Change route endpoint
             this.Router.navigateByUrl('/connected');
         }
+        */
   };
 
-  private getUsersInfo = ( ) => {
-      // Use CrudService to get user infos
-      this.CrudService.readAllItems('users')
-      .then( data => {
-          console.log('SUCCES request', data);
-      })
-      .catch( error => {
-          console.log('ERROR request', error);
-      });
-  };
+//   private getUsersInfo = ( ) => {
+//       // Use CrudService to get user infos
+//       this.CrudService.readAllItems('users')
+//       .then( data => {
+//           console.log('SUCCES request', data);
+//       })
+//       .catch( error => {
+//           console.log('ERROR request', error);
+//       });
+//   };
 
   async ngOnInit(){
     //   this.getUserInfo('Sincere@april.biz');

@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ObservableService } from "../observable/observable.service";
+import { environment } from "../../../environments/environment";
 //
 
 
@@ -10,6 +11,8 @@ Definition
 */
 @Injectable()
 export class CrudService {
+
+  apiKey: string = environment.apiKey;
 
   // Inject module(s) in the service
   constructor(
@@ -44,14 +47,19 @@ Methods to get API responses
 
   // CRUD method: read item
   public readOneItem(endpoint: String, param: String): Promise<any>{
-    return this.HttpClient.get(`https://jsonplaceholder.typicode.com/${endpoint}?${param}`).toPromise()
+    return this.HttpClient.get(`https://jsonplaceholder.typicode.com/${endpoint}?${param}`)
+    .toPromise()
     .then( data => this.getData(endpoint, data))
     .catch(this.handleError);
   };
 
   // CRUD method: read all items
-  public readAllItems(endpoint: String): Promise<any>{
-    return this.HttpClient.get(`https://jsonplaceholder.typicode.com/${endpoint}?`)
+  public readAllItems(url: string, endpoint: String): Promise<any>{
+    let apiKey = environment.apiKey;
+    // let myHeader = new HttpHeaders();
+    // myHeader.append('Content-Type', 'application/json');
+    // myHeader.append("x-api-key", apiKey);
+    return this.HttpClient.get(`${url}/${endpoint}?country=us&apiKey=`+this.apiKey)
     .toPromise()
     .then( data => this.getData(endpoint, data))
     .catch(this.handleError);

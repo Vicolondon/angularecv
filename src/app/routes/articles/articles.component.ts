@@ -13,6 +13,7 @@ export class ArticlesComponent implements OnInit {
     Declarations
     */
    public postCollection: any;
+   public allArticles: any;
       
    constructor(
      private CrudService: CrudService
@@ -25,8 +26,10 @@ export class ArticlesComponent implements OnInit {
  */
      // Method to get the post list
      public getPostList = async () => {
-       this.postCollection = await this.CrudService.readAllItems('posts');
-       console.log(this.postCollection);
+       let url = 'https://newsapi.org/v2';
+       this.postCollection = await this.CrudService.readAllItems(url, 'top-headlines');
+       this.allArticles = this.postCollection.articles
+       console.log(this.allArticles);
      };
  //
 
