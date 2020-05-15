@@ -2,6 +2,10 @@
     [formGroup]="formData" 
     (submit)="formSubmit.emit(formData.value.email)"
 >
+    <!-- <input  
+        formControlName="name"
+        type="name" name="name" required minlength="5" placeholder="Your name"
+    >-->
     <input  
         formControlName="email"
         type="email" name="email" required minlength="5" placeholder="Your email"

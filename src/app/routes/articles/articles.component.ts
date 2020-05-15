@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CrudService } from '../../services/crud/crud.service';
 
 
 @Component({
@@ -8,9 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlesComponent implements OnInit {
 
-  constructor() { }
+    /* 
+    Declarations
+    */
+   public postCollection: any;
+      
+   constructor(
+     private CrudService: CrudService
+   ){}
+ //
 
-  ngOnInit() {
-  }
+
+ /* 
+ Methods
+ */
+     // Method to get the post list
+     public getPostList = async () => {
+       this.postCollection = await this.CrudService.readAllItems('posts');
+       console.log(this.postCollection);
+     };
+ //
+
+ /* 
+ Hooks
+ */
+   ngOnInit(){
+     // Get the poost list
+     this.getPostList();
+   };
+ //
 
 }
