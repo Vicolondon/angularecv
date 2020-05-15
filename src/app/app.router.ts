@@ -8,6 +8,9 @@ Imports
     import { HomePageComponent } from "./routes/home-page/home-page.component";
     import { LoginPageComponent } from "./routes/login-page/login-page.component";
     import { ArticlesComponent } from "./routes/articles/articles.component";
+
+    // Auth
+    import { AuthGuard } from "./auth.guard";
 //
 
 /* 
@@ -24,6 +27,7 @@ Export
         },
         {
             path: 'articles',
+            canActivate: [ AuthGuard ],
             component: ArticlesComponent
         }
     ];

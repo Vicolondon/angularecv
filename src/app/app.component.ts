@@ -4,6 +4,7 @@ Import
   // Angular
   import { Component, OnInit } from '@angular/core';
   import { CrudService } from "./services/crud/crud.service";
+  import { Router } from '@angular/router';
 //
 
 /* 
@@ -31,11 +32,17 @@ Componant class definition
         public userData: any;
 
         constructor(
-          private CrudService: CrudService
+          private CrudService: CrudService,
+          private Router: Router,
       ){}
   
       async ngOnInit(){
-          await this.CrudService.readOneItem('users', `email=${localStorage.getItem('userEmail')}`);
+        const userInfo = await this.CrudService.readOneItem('users', `email=${localStorage.getItem('userEmail')}`);
+          // Check user info
+          if(userInfo.length > 0){
+              // Change route endpoint
+              this.Router.navigateByUrl('/articles');
+          };
       };
   }
 //
