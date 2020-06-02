@@ -5,8 +5,11 @@
     <li *ngIf="!userData">
         <a [routerLink]="'/login'">Login</a>
     </li>
-    <li *ngIf="userData">
+    <li>
         <a [routerLink]="'/articles'">Articles</a>
+    </li>
+    <li *ngIf="userData">
+        <a [routerLink]="'/favorites'">Favorites</a>
     </li>
     <li *ngIf="userData">
         <a href="#" (click)="logout()">Logout</a>

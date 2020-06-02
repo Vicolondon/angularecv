@@ -21,6 +21,7 @@ import { ObservableService } from "./services/observable/observable.service";
 // Forms
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LoginPageComponent } from './routes/login-page/login-page.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { LoginPageComponent } from './routes/login-page/login-page.component';
     HeaderComponent,
     LoginComponent,
     ArticlesComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

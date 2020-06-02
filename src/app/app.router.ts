@@ -27,6 +27,10 @@ Export
         },
         {
             path: 'articles',
+            component: ArticlesComponent
+        },
+        {
+            path: 'favorites',
             canActivate: [ AuthGuard ],
             component: ArticlesComponent
         }

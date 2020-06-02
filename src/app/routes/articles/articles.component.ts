@@ -21,15 +21,34 @@ export class ArticlesComponent implements OnInit {
  //
 
 
+    /* 
+    Methods
+    */
+        // Method to get the post list
+        // public getSources = async (source: String, keywords: String) => {
+        //   let url = 'https://newsapi.org/v2';
+        //   this.postCollection = await this.CrudService.readSpecificSourceKeyword(url, 'sources', source, keywords);
+        //   this.allArticles = this.postCollection.articles
+        //   console.log(this.allArticles);
+        // };
+
+        public getSources = async (element) => {
+          let url = 'https://newsapi.org/v2';
+          this.postCollection = await this.CrudService.readSpecificSourceKeyword(url, 'sources', element.source, element.keywords);
+          this.allArticles = this.postCollection.articles
+          // console.log(this.allArticles);
+        };
+    //
+
  /* 
  Methods
  */
      // Method to get the post list
      public getPostList = async () => {
        let url = 'https://newsapi.org/v2';
-       this.postCollection = await this.CrudService.readAllItems(url, 'top-headlines');
+       this.postCollection = await this.CrudService.readAllItems(url, 'sources');
        this.allArticles = this.postCollection.articles
-       console.log(this.allArticles);
+       // console.log(this.allArticles);
      };
  //
 
@@ -38,7 +57,9 @@ export class ArticlesComponent implements OnInit {
  */
    ngOnInit(){
      // Get the poost list
-     this.getPostList();
+     // this.getPostList();
+     this.getSources({source:'abc-news',keywords:''});
+    //  this.getSources('abc-news', "");
    };
  //
 

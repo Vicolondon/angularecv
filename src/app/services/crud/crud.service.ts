@@ -103,6 +103,42 @@ public updateItem(endpoint: String, param: String, data): Promise<any>{
     .then( data => this.getData(endpoint, data))
     .catch(this.handleError);
   };
+
+  // CRUD method: read all items
+  public readSpecificSource(url: string, endpoint: String, source: String): Promise<any>{
+    let apiKey = environment.apiKey;
+    // let myHeader = new HttpHeaders();
+    // myHeader.append('Content-Type', 'application/json');
+    // myHeader.append("x-api-key", apiKey);
+    return this.HttpClient.get(`${url}/${endpoint}?name=${source}&apiKey=`+this.apiKey)
+    .toPromise()
+    .then( data => this.getData(endpoint, data))
+    .catch(this.handleError);
+  };
+
+  // CRUD method: read all items
+  public readSpecificSourceKeyword(url: string, endpoint: String, source: String, keywords: String): Promise<any>{
+    let apiKey = environment.apiKey;
+    // let myHeader = new HttpHeaders();
+    // myHeader.append('Content-Type', 'application/json');
+    // myHeader.append("x-api-key", apiKey);
+    return this.HttpClient.get(`${url}/top-headlines?sources=${source}&q=${keywords}&apiKey=`+this.apiKey)
+    .toPromise()
+    .then( data => this.getData(endpoint, data))
+    .catch(this.handleError);
+  };
+
+  // CRUD method: read all items
+  public getAllSources(url: string, endpoint: String): Promise<any>{
+    let apiKey = environment.apiKey;
+    // let myHeader = new HttpHeaders();
+    // myHeader.append('Content-Type', 'application/json');
+    // myHeader.append("x-api-key", apiKey);
+    return this.HttpClient.get(`${url}/sources?apiKey=`+this.apiKey)
+    .toPromise()
+    .then( data => this.getData(endpoint, data))
+    .catch(this.handleError);
+  };
 //
 };
 //
